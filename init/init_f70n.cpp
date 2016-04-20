@@ -89,7 +89,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.build.fingerprint", "lge/g2mss_global_com/g2mss:5.1.1/LMY48Y/151391007575d:user/release-keys");
         property_set("persist.radio.multisim.config", "");
         property_set("persist.multisim.config", "");
-    } else if (strncmp(serial, "LGD620", 6) == 0) {
+    } else if (strncmp(serial, "LGD315", 6) == 0) {
         /* D620 */
 	property_set("ro.product.model", "LG-D315");
 	property_set("ro.product.device", "f70n");
