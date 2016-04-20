@@ -1,0 +1,29 @@
+#
+# system.prop for g2m
+#
+# Use reference RIL for initial bringup
+rild.libpath=/vendor/lib/libril-qc-qmi-1.so
+rild.libargs=-d /dev/smd0
+
+ro.qualcomm.sensors.qmd=false
+ro.qc.sdk.sensors.gestures=true
+ro.qualcomm.sensors.pedometer=false
+ro.qc.sensors.step_detector=true
+ro.qc.sensors.step_counter=true
+ro.qualcomm.sensors.pam=true
+ro.qualcomm.sensors.scrn_ortn=true
+ro.qualcomm.sensors.smd=true
+ro.qualcomm.sensors.game_rv=false
+ro.qualcomm.sensors.georv=true
+ro.qc.sensors.smgr_mag_cal_en=false
+ro.qc.sensors.max_grav_no_gyro=50
+ro.qc.sensors.max_geomag_rotvec=50
+
+debug.qualcomm.sns.hal=1
+debug.qualcomm.sns.daemon=e
+debug.qualcomm.sns.libsensor1=e
+
+ro.sf.lcd_density=240
+
+# ART
+dalvik.vm.dex2oat-flags=--no-watch-dog
