@@ -23,6 +23,8 @@
 TARGET_SPECIFIC_HEADER_PATH += device/lge/f70n/include
 
 # Vendor Init
+TARGET_UNIFIED_DEVICE := true
+TARGET_INIT_VENDOR_LIB := libinit_msm
 TARGET_LIBINIT_DEFINES_FILE := device/lge/f70n/init/init_f70n.cpp
 TARGET_OTA_ASSERT_DEVICE := f70n
 #TARGET_INCREMENTAL_OTA_VERBATIM_FILES := /system/priv-app/OneTimeInitializer/OneTimeInitializer.apk /system/app/Provision/Provision.apk		
