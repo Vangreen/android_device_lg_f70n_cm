@@ -36,11 +36,10 @@
 #include "log.h"
 #include "util.h"
 
-#include "init_msm.h"
 
 #define CHUNK 2048 /* read 2048 bytes at a time */
 
-int check_cmdline(char param[]) {
+int check_cmdline(const char param[]) {
 
     char buf[CHUNK];
     FILE *file;
@@ -72,23 +71,40 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     char device[PROP_VALUE_MAX];
     char devicename[PROP_VALUE_MAX];
 
-    UNUSED(msm_id);
-    UNUSED(msm_ver);
-    UNUSED(board_type);
-
     property_get("ro.boot.serialno", serial);
-    if (strncmp(serial, "LGD315", 6) == 0) {
-        /* D315 */
-        property_set("ro.product.device", "f70n");
-        property_set("ro.product.model", "LG-D315");
-        property_set("ro.build.description", "f70n_global_com-user 4.4.2 KOT49I.A1405346129 1405346129 release-keys");
-        property_set("ro.build.fingerprint", "lge/f70n_global_com/f70n:4.4.2/KOT49I.A1405346129/1405346129:user/release-keys");
+    if (strncmp(serial, "LGD618", 6) == 0) {
+        /* D618 */
+        property_set("ro.product.device", "g2mds");
+        property_set("ro.product.model", "LG-D618");
+        property_set("ro.build.description", "g2mds_global_com-user 5.1.1 LMY48Y 151391007575d release-keys");
+        property_set("ro.build.fingerprint", "lge/g2mds_global_com/g2mds:5.1.1/LMY48Y/151391007575d:user/release-keys");
+	property_set("persist.radio.multisim.config", "dsds");
+        property_set("persist.multisim.config", "dsds");
+	property_set("persist.radio.dont_use_dsd", "true");
+    } else if (strncmp(serial, "LGD610", 6) == 0) {
+         /* D315 */
+	property_set("ro.product.model", "LG-D315");
+	property_set("ro.product.device", "f70n");
+        property_set("ro.build.description", "f70n_global_com-user 5.1.1 LMY48Y 151391007575d release-keys");
+        property_set("ro.build.fingerprint", "lge/f70n_global_com/f70n:5.1.1/LMY48Y/151391007575d:user/release-keys");
         property_set("persist.radio.multisim.config", "");
+        property_set("persist.multisim.config", "");
+    } else if (strncmp(serial, "LGD315", 6) == 0) {
+        /* D620 */
+	property_set("ro.product.model", "LG-D315");
+	property_set("ro.product.device", "f70n");
+	property_set("ro.nfc.port", "I2C");
+        property_set("ro.build.description", "f70n_global_com-user 5.1.1 LMY48Y 151391007575d release-keys");
+        property_set("ro.build.fingerprint", "lge/f70n_global_com/f70n:5.1.1/LMY48Y/151391007575d:user/release-keys");
+        property_set("persist.radio.multisim.config", "");
+        property_set("persist.multisim.config", "");
     } else {
         /* XXX */
-        property_set("ro.product.device", "f70");
+        /* XXX */
+        property_set("ro.product.device", "g2m");
         property_set("ro.product.model", "Please write your model name to nikich340@gmail.com");
         property_set("persist.radio.multisim.config", "");
+        property_set("persist.multisim.config", "");
     }
     property_get("ro.product.device", device);
     strlcpy(devicename, device, sizeof(devicename));
